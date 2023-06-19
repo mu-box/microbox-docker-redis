@@ -1,55 +1,55 @@
-# Redis [![Build Status Image](https://travis-ci.org/nanobox-io/nanobox-docker-redis.svg)](https://travis-ci.org/nanobox-io/nanobox-docker-redis)
+# Redis [![Build Status Image](https://github.com/mu-box/microbox-docker-redis/actions/workflows/ci.yaml/badge.svg)](https://github.com/mu-box/microbox-docker-redis/actions)
 
-This is an Redis Docker image used to launch a Redis service on Nanobox. To use this image, add a data component to your `boxfile.yml` with the `nanobox/redis` image specified:
+This is an Redis Docker image used to launch a Redis service on Microbox. To use this image, add a data component to your `boxfile.yml` with the `mubox/redis` image specified:
 
 ```yaml
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
 ```
 
 ## Redis Configuration Options
 Redis components are configured in your `boxfile.yml`. All available configuration options are outlined below.
 
 ###### Quick Links
-[version](#version)  
-[tcp\_keepalive](#tcp-keepalive)  
-[databases](#databases)  
-[stop\_writes\_on\_bgsave\_error](#stop-writes-on-bgsave-error)  
-[slave\_serve\_stale\_data](#slave-serve-stale-data)  
-[slave\_read\_only](#slave-read-only)  
-[repl\_ping\_slave\_period](#repl-ping-slave-period)  
-[repl\_timeout](#repl-timeout)  
-[repl\_disable\_tcp\_nodelay](#repl-disable-tcp-nodelay)  
-[max\_clients](#max-clients)  
-[maxmemory\_policy](#maxmemory-policy)  
-[maxmemory\_samples](#maxmemory-samples)  
-[appendonly](#appendonly)  
-[appendfsync](#appendfsync)  
-[no\_appendfsync\_on\_rewrite](#no-appendfsync-on-rewrite)  
-[auto\_aof\_rewrite\_percentage](#auto-aof-rewrite-percentage)  
-[auto\_aof\_rewrite\_min\_size](#auto-aof-rewrite-min-size)  
-[lua\_time\_limit](#lua-time-limit)  
-[slowlog\_log\_slower\_than](#slowlog-log-slower-than)  
-[slowlog\_max\_len](#slowlog-max-length)  
+[version](#version)
+[tcp\_keepalive](#tcp-keepalive)
+[databases](#databases)
+[stop\_writes\_on\_bgsave\_error](#stop-writes-on-bgsave-error)
+[slave\_serve\_stale\_data](#slave-serve-stale-data)
+[slave\_read\_only](#slave-read-only)
+[repl\_ping\_slave\_period](#repl-ping-slave-period)
+[repl\_timeout](#repl-timeout)
+[repl\_disable\_tcp\_nodelay](#repl-disable-tcp-nodelay)
+[max\_clients](#max-clients)
+[maxmemory\_policy](#maxmemory-policy)
+[maxmemory\_samples](#maxmemory-samples)
+[appendonly](#appendonly)
+[appendfsync](#appendfsync)
+[no\_appendfsync\_on\_rewrite](#no-appendfsync-on-rewrite)
+[auto\_aof\_rewrite\_percentage](#auto-aof-rewrite-percentage)
+[auto\_aof\_rewrite\_min\_size](#auto-aof-rewrite-min-size)
+[lua\_time\_limit](#lua-time-limit)
+[slowlog\_log\_slower\_than](#slowlog-log-slower-than)
+[slowlog\_max\_len](#slowlog-max-length)
 
-Advanced Configs  
-[hash\_max\_ziplist\_entries](#hash-max-ziplist-entries)  
-[hash\_max\_ziplist\_value](#hash-max-ziplist-value)  
-[list\_max\_ziplist\_entries](#list-max-ziplist-entries)  
-[list\_max\_ziplist\_value](#list-max-ziplist-value)  
-[set\_max\_intset\_entries](#set-max-intset-entries)  
-[zset\_max\_ziplist\_entries](#zset-max-ziplist-entries)  
-[zset\_max\_ziplist\_value](#zset-max-ziplist-values)  
-[activerehashing](#activerehashing)  
-[hz](#hz)  
+Advanced Configs
+[hash\_max\_ziplist\_entries](#hash-max-ziplist-entries)
+[hash\_max\_ziplist\_value](#hash-max-ziplist-value)
+[list\_max\_ziplist\_entries](#list-max-ziplist-entries)
+[list\_max\_ziplist\_value](#list-max-ziplist-value)
+[set\_max\_intset\_entries](#set-max-intset-entries)
+[zset\_max\_ziplist\_entries](#zset-max-ziplist-entries)
+[zset\_max\_ziplist\_value](#zset-max-ziplist-values)
+[activerehashing](#activerehashing)
+[hz](#hz)
 [aof\_rewrite\_incremental\_fsync](#aof-rewrite-incremental-fsync)
 
 #### Overview of Redis boxfile.yml Settings
 ```yaml
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
-    version: 2.8
+    version: 4.0
     tcp_keepalive: 60
     databases: 16
     stop_writes_on_bgsave_error: 'yes'
@@ -96,9 +96,9 @@ When configuring a Redis service in your Boxfile, can specify which version of R
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
-    version: 3.0
+    version: 4.0
 ```
 
 ### TCP Keepalive
@@ -111,7 +111,7 @@ If non-zero, use SO_KEEPALIVE to send TCP ACKs to clients in absence of communic
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     tcp_keepalive: 60
 ```
@@ -123,7 +123,7 @@ Sets the number of databases.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     databases: 16
 ```
@@ -139,7 +139,7 @@ However if you have setup your proper monitoring of the Redis server and persist
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     stop_writes_on_bgsave_error: 'yes'
 ```
@@ -155,7 +155,7 @@ When a slave loses its connection with the master, or when the replication is st
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     slave_serve_stale_data: 'yes'
 ```
@@ -167,7 +167,7 @@ You can configure a slave instance to accept writes or not. Writing against a sl
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     slave_read_only: 'yes'
 ```
@@ -179,7 +179,7 @@ Slaves send PINGs to server in a predefined interval. It's possible to change th
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     repl_ping_slave_period: 10
 ```
@@ -191,7 +191,7 @@ The following option sets a timeout for both Bulk transfer I/O timeout and maste
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     repl_timeout: 60
 ```
@@ -203,7 +203,7 @@ Toggles TCP_NODELAY on the slave socket after SYNC. If you select "yes" Redis wi
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     repl_disable_tcp_nodelay: 'no'
 ```
@@ -215,7 +215,7 @@ Set the max number of clients connected at the same time. Once the limit is reac
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     max_clients: 1024
 ```
@@ -234,7 +234,7 @@ Defines how Redis will select what to remove when maxmemory is reached. You can 
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     maxmemory_policy: 'volatile-lru'
 ```
@@ -246,7 +246,7 @@ LRU and minimal TTL algorithms are not precise algorithms but approximated algor
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     maxmemory_samples: 3
 ```
@@ -263,7 +263,7 @@ AOF and RDB persistence can be enabled at the same time without problems. If the
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     appendonly: 'no'
 ```
@@ -285,7 +285,7 @@ If unsure, use "everysec".
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     appendfsync: 'everysec'
 ```
@@ -303,7 +303,7 @@ If you have latency problems turn this to "yes". Otherwise leave it as "no" that
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     no_appendfsync_on_rewrite: 'no'
 ```
@@ -317,7 +317,7 @@ Specify a percentage of zero in order to disable the automatic AOF rewrite featu
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     auto_aof_rewrite_percentage: 100
 ```
@@ -329,7 +329,7 @@ Specifies the minimal size for the AOF file to be rewritten.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     auto_aof_rewrite_min_size: '64m'
 ```
@@ -347,7 +347,7 @@ Set it to 0 or a negative value for unlimited execution without warnings.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     lua_time_limit: 5000
 ```
@@ -359,7 +359,7 @@ This tells Redis what is the execution time, in microseconds, to exceed in order
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     slowlog_log_slower_than:
 ```
@@ -371,7 +371,7 @@ This parameter sets the length of the slow log. When a new command is logged the
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     slowlog_max_len: 128
 ```
@@ -385,7 +385,7 @@ Sets the max number of hash entries before they are encrypted to save space.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     hash_max_ziplist_entries: 512
 ```
@@ -397,7 +397,7 @@ Sets the max value of hash entries before they are encrypted to save space.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     hash_max_ziplist_value: 64
 ```
@@ -409,7 +409,7 @@ Sets the max number of list entries before they are encrypted to save space.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     list_max_ziplist_entries: 512
 ```
@@ -421,7 +421,7 @@ Sets the max value of list entries before they are encrypted to save space.
 ```yaml
 # default settings
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     list_max_ziplist_value: 64
 ```
@@ -433,7 +433,7 @@ Sets have a special encoding in just one case: when a set is composed of just st
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     set_max_intset_entries: 512
 ```
@@ -445,9 +445,9 @@ Sets the maximum number of entries before a sorted set is encoded to save space.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
-    zset_max_ziplist_entries: 12    
+    zset_max_ziplist_entries: 12
 ```
 
 ### ZSet Max Ziplist Values
@@ -457,7 +457,7 @@ Sets the maximum value of entries before a sorted set is encoded to save space.
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     zset_max_ziplist_value: 64
 ```
@@ -475,7 +475,7 @@ Use `activerehashing: 'yes'` if you don't have such hard requirements but want t
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     activerehashing: 'yes'
 ```
@@ -491,7 +491,7 @@ The range is between 1 and 500, however a value over 100 is usually not a good i
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     hz: 10
 ```
@@ -503,13 +503,13 @@ When a child rewrites the AOF file, if the following option is enabled the file 
 ```yaml
 # default setting
 data.redis:
-  image: nanobox/redis
+  image: mubox/redis
   config:
     aof_rewrite_incremental_fsync: 'yes'
 ```
 
 ## Help & Support
-This is a Redis Docker image provided by [Nanobox](http://nanobox.io). If you need help with this image, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the image, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-docker-redis/issues/new).
+This is a Redis Docker image provided by [Microbox](http://microbox.cloud). If you need help with this image, you can reach out to us in the [Microbox Discord](https://discord.gg/MCDdHfy). If you are running into an issue with the image, feel free to [create a new issue on this project](https://github.com/mu-box/microbox-docker-redis/issues/new).
 
 ## License
-Mozilla Public License, version 2.0
+This project is released under [The MIT License](http://opensource.org/licenses/MIT).
